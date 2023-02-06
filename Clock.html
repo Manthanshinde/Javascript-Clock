@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clock</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+            background: #e0e0e0;
+            width: 500px;
+            height: auto;
+        }
+
+        .hour,
+        .min,
+        .sec,
+        .colon {
+            font-size: 6rem;
+            color: #f35b72;
+            text-shadow: 3px 3px 12px #bebebe, -3px -3px 12px #ffffff;
+            -webkit-text-stroke: 2px #e0e0e0;
+            font-weight: bold;
+
+        }
+
+        .amps {
+            font-size: 3rem;
+            color: #f35b72;
+            font-weight: bold;
+            display: block;
+            margin: auto;
+        }
+
+        .box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #e0e0e0;
+            box-shadow: 10px 10px 22px #bebebe, -10px -10px 22px #ffffff;
+            border-radius: 10px;
+            width: 500px;
+            height: auto;
+        }
+
+        .colon {
+            margin-bottom: auto;
+        }
+
+        .tittle {
+            font-size: 1.5rem;
+            color: #f35b72;
+            -webkit-text-stroke: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <div class="hour" id="hour">00</div>
+            <span class="tittle">Hours</span>
+        </div>
+        <div class="colon">:</div>
+        <div class="box">
+            <div class="min" id="min">00</div>
+            <span class="tittle">Minute</span>
+        </div>
+        <div class="colon">:</div>
+        <div class="box">
+            <div class="sec" id="sec">00</div>
+            <span class="tittle">sec</span>
+        </div>
+        <div class="box">
+            <div class="amps" id="amps">AM</div>
+        </div>
+    </div>
+
+    <script>
+        let hour= document.getElementById('hour')
+        let min=document.getElementById('min')
+        let sec=document.getElementById('sec')
+        let amps=document.getElementById('amps')
+
+        setInterval(() => { 
+            let h=new Date().getHours()
+            let m=new Date().getMinutes()
+            let s=new Date().getSeconds()
+
+            if(h>12){h= h-12}
+            if(h<10){h = '0' + h}
+            if(m<10){ m = '0' +m}
+            if (s<10){s = '0' +s }
+            if(h>12){amps.innerText = "AM"
+        }else{amps.innerText="PM"}
+            hour.innerText = h;
+            min.innerText =m;
+            sec.innerText = s;
+        });
+
+        
+
+</script>
+</body>
+
+</html>
